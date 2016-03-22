@@ -7,10 +7,13 @@ class BookmarkManager < Sinatra::Base
     erb(:hello)
   end
 
-
   get '/links' do
     @links = Link.all
     erb(:'links/links')
+  end
+
+  get '/links/new' do
+    erb(:'links/add_link')
   end
 
   run! if app_file == $0

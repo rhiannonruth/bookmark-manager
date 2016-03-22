@@ -15,7 +15,7 @@ feature 'links page' do
     visit '/'
     click_button "click here"
     expect(page).to have_link 'this is the first link'
+    Link.all.destroy
   end
-
 
 end
