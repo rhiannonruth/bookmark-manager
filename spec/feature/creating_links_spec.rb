@@ -37,10 +37,22 @@ feature 'adding links' do
       expect(page).to have_button 'Memorize Bookmark'
     end
 
-    xscenario 'links added by the user shows up in the links page' do
-      expect(page).to have_link 'TODO'
+    scenario 'links added by the user shows up in the links page' do
+      fill_in 'link_name', with: 'ass'
+      fill_in 'link_address', with: 'boob'
+      click_button 'Memorize Bookmark'
+      expect(page).to have_link 'ass'
+      Link.first(:link_name => 'ass').destroy
     end
 
+    scenario 'links added by the user work' do
+      fill_in 'link_name', with: 'ass'
+      fill_in 'link_address', with: 'boob'
+      click_button 'Memorize Bookmark'
+      click_link 'ass'
+      expect(page.current_path).to eq '/boob'
+      Link.first(:link_name => 'ass').destroy
+    end
   end
 
 
