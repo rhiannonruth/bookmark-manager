@@ -9,6 +9,6 @@ class Link
   property :url,      String
 end
   DataMapper::Logger.new($stdout, :debug)
-  DataMapper.setup(:default, ENV['postgres://bnwnkdsnvjwica:WpuLOkn7wNGX3HbGyEF7qP3Qs5@ec2-107-22-246-252.compute-1.amazonaws.com:5432/dui9ucmvtaacc'] ||
+  DataMapper.setup(:default, ENV['DATABASE_URL'] ||
                    "postgres://localhost/bookmark_manager_#{ENV['RACK_ENV']}")
   DataMapper.finalize.auto_upgrade!
