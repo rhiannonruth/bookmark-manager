@@ -1,8 +1,10 @@
 require 'sinatra/base'
 
 class BookmarkManager < Sinatra::Base
-  DOLLA_DOLLA_BILL_YALL = 0
 
+  get '/' do
+    '<a href="pizza">pizza</a>'
+  end
 
-  run! if app_file == $DOLLA_DOLLA_BILL_YALL
+  run! if app_file == $0
 end
