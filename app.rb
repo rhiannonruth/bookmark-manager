@@ -4,6 +4,7 @@ require_relative 'models/link'
 class Bookmark_Manager < Sinatra::Base
 
   enable :sessions
+  ENV["RACK_ENV"] ||= "development"
 
   get '/' do
     redirect '/links'
