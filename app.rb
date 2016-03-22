@@ -3,7 +3,7 @@ require 'sinatra/base'
 class BookmarkManager < Sinatra::Base
 
   get '/' do
-    '<a href="pizza">pizza</a>'
+    erb(:welcome)
   end
 
   run! if app_file == $0
