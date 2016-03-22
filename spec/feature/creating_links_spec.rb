@@ -42,7 +42,6 @@ feature 'adding links' do
       fill_in 'link_address', with: 'boob'
       click_button 'Memorize Bookmark'
       expect(page).to have_link 'ass'
-      Link.first(:link_name => 'ass').destroy
     end
 
     scenario 'links added by the user work' do
@@ -51,8 +50,8 @@ feature 'adding links' do
       click_button 'Memorize Bookmark'
       click_link 'ass'
       expect(page.current_path).to eq '/boob'
-      Link.first(:link_name => 'ass').destroy
     end
+    
   end
 
 

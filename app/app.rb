@@ -5,6 +5,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/' do
     erb(:hello)
+
   end
 
   post '/links' do

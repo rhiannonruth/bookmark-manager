@@ -1,5 +1,4 @@
 feature 'links page' do
-  Link.create(link_address: "first_link", link_name: "this is the first link")
 
   scenario 'first page is actually loading' do
     visit '/'
@@ -12,10 +11,10 @@ feature 'links page' do
   end
 
   scenario 'link page has a default link' do
+    Link.create(link_address: "first_link", link_name: "this is the first link")
     visit '/'
     click_button "click here"
     expect(page).to have_link 'this is the first link'
-    Link.all.destroy
   end
 
 end
