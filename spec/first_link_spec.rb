@@ -14,7 +14,7 @@ feature 'links page' do
   scenario 'link page has a default link' do
     visit '/'
     click_button "click here"
-    expect(page).to have_link 'first_link'
+    expect(page).to have_link 'this is the first link'
   end
 
 

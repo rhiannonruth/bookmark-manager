@@ -9,11 +9,8 @@ class BookmarkManager < Sinatra::Base
 
 
   get '/links' do
-    Link.create(link_address: "first_link", link_name: "this is the first link")
-      puts Link.get(1)
-    @link_address = "first_link"
-    @link_name = Link.get(1)
-    erb(:welcome)
+    @links = Link.all
+    erb(:'links/links')
   end
 
   run! if app_file == $0
