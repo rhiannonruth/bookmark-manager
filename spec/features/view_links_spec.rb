@@ -1,14 +1,6 @@
 require 'spec_helper'
 
-RSpec.configure do |config|
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) { DatabaseCleaner.start }
-  config.after(:each) { DatabaseCleaner.clean }
-end
+set_database
 
 feature 'View Links' do
   scenario 'View a list of links' do
