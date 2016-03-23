@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 source 'https://rubygems.org'
-=======
-source "https://rubygems.org"
->>>>>>> 363abe9055b664dda383197ffb3ff8ecdb42f6d1
-
 ruby '2.3.0'
 
 gem 'sinatra'
