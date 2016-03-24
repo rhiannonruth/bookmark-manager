@@ -22,8 +22,17 @@ feature 'User Management' do
     expect(user.email).to eq('johnsmith@gmail.com')
   end
 
-  scenario 'mismatch of passwords' do
-
+  scenario 'entering mismatching passwords does not add user' do
     expect{sign_up_wrong_password}.not_to change(User, :count)
+  end
+
+  scenario 'entering mismatching passwords stays on page' do
+    sign_up_wrong_password
+    expect(current_path).to eq('/sign_up')
+  end
+
+  scenario 'entering mismatching passwords displays message' do
+    sign_up_wrong_password
+    expect(page).to have_content('Password and confirmation password do not match')
   end
 end
