@@ -33,7 +33,7 @@ feature 'User Management' do
 
   scenario 'entering mismatching passwords displays message' do
     sign_up_wrong_password
-    expect(page).to have_content('Password and confirmation password do not match')
+    expect(page).to have_content('Password does not match the confirmation')
   end
 
   scenario 'entering no email will not update database' do
@@ -41,13 +41,21 @@ feature 'User Management' do
       visit '/sign_up/register'
       click_button 'Sign Up'
     end.not_to change(User, :count)
+    expect(page).to have_content('Email must not be blank')
   end
 
-  scenario ' entering invalid email will not update database' do
+  scenario 'entering invalid email will not update database' do
     expect do
       visit '/sign_up/register'
       fill_in 'email', with: 'johnsmithgmail.com'
       click_button 'Sign Up'
     end.not_to change(User, :count)
+    expect(page).to have_content('Email has an invalid format')
+  end
+
+  scenario 'user must have unique email address to sign up' do
+    sign_up
+    expect{ sign_up }.not_to change{ User.count }
+    expect(page).to have_content('Email is already taken')
   end
 end
