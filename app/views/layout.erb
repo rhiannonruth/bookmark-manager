@@ -1,5 +1,9 @@
 <% if current_user %>
   <h1>Bookmarks for <%= current_user.email %></h1>
+  <form method='post' action='/sessions'>
+    <input type='hidden' name='_method' value='delete'>
+    <input type='submit' value='Sign Out'>
+  </form>
 <% end %>
 
 <% if flash[:errors] && !flash[:errors].empty? %>
@@ -9,6 +13,12 @@
       <li><%= error %></li>
       <% end %>
   </ul>
+<% end %>
+
+<% if flash[:notice] %>
+  <div id='notice'>
+    <%= flash[:notice] %>
+  </div>
 <% end %>
 
 <%= yield %>
