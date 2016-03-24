@@ -21,4 +21,9 @@ feature 'User Management' do
     user = User.first
     expect(user.email).to eq('johnsmith@gmail.com')
   end
+
+  scenario 'mismatch of passwords' do
+
+    expect{sign_up_wrong_password}.not_to change(User, :count)
+  end
 end
