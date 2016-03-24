@@ -1,0 +1,4 @@
+<% if current_user %>
+  <h1>Bookmarks for <%= current_user.email %></h1>
+<% end %>
+<%= yield %>
