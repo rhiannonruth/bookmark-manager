@@ -10,9 +10,12 @@ class User
 
 
   property :id,       Serial
-  property :email,    String
+  property :email,    String, required: true#, format: :email_address
   property :password_hash, Text
+
   validates_confirmation_of :password
+  validates_presence_of :email
+  validates_format_of :email, as: :email_address
 
   def password=(password)
     @password = password

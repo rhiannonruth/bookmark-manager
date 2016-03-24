@@ -35,4 +35,19 @@ feature 'User Management' do
     sign_up_wrong_password
     expect(page).to have_content('Password and confirmation password do not match')
   end
+
+  scenario 'entering no email will not update database' do
+    expect do
+      visit '/sign_up/register'
+      click_button 'Sign Up'
+    end.not_to change(User, :count)
+  end
+
+  scenario ' entering invalid email will not update database' do
+    expect do
+      visit '/sign_up/register'
+      fill_in 'email', with: 'johnsmithgmail.com'
+      click_button 'Sign Up'
+    end.not_to change(User, :count)
+  end
 end
